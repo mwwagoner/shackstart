@@ -9,8 +9,7 @@ def create_app(config=None):
 
     os.makedirs(app.instance_path, exist_ok=True)
 
-    @app.route('/')
-    def test_route():
-        return 'Test'
+    from .blueprints import index
+    app.register_blueprint(index.bp)
 
     return app
